@@ -70,7 +70,7 @@ function playGame() {
   }
 
   for (let i = 0; i < 5; i++) {
-    alert(`You: ${humanScore}\nComputer: ${computerScore}`);
+    alert(`Round ${i+1}\n\nYou: ${humanScore}\nComputer: ${computerScore}`);
     playRound(getHumanChoice(), getComputerChoice());
   }
 
