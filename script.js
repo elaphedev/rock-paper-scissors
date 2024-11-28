@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 // Makes the computer's choice.
 // Randomly chooses between rock, paper or scissors.
 function getComputerChoice() {
@@ -17,8 +20,8 @@ function getComputerChoice() {
   }
 }
 
-// Prompts user for a choice.
-// Will not let user choose an invalid option.
+// Prompts human for a choice.
+// Will not let the human choose an invalid option.
 function getHumanChoice() {
   while (true) {
     let humanChoice = prompt("Rock, paper or scissors?");
@@ -33,4 +36,33 @@ function getHumanChoice() {
   }
 }
 
-console.log(getHumanChoice());
+// Plays a sinlge round of rock, paper, scissors.
+// Determines who is the winner and increments their respective score.
+function playRound(humanChoice, computerChoice) {
+  alert(`Your choice: ${humanChoice}\nThe computer's choice: ${computerChoice}`);
+
+  // Checks if the human wins
+  if (humanChoice == "rock" && computerChoice == "scissors" ||
+      humanChoice == "paper" && computerChoice == "rock" ||
+      humanChoice == "scissors" && computerChoice == "paper") {
+    humanScore += 1;
+    alert("You win!");
+    return;
+  }
+
+  // Checks if the computer wins
+  if (computerChoice == "rock" && humanChoice == "scissors" ||
+      computerChoice == "paper" && humanChoice == "rock" ||
+      computerChoice == "scissors" && humanChoice == "paper") {
+    computerScore += 1;
+    alert("You lose! The computer wins!");
+    return;
+  }
+
+  // If neither of those previous conditions are met
+  // this means it was a draw.
+  alert("Draw! Better luck next time!");
+  return;
+}
+
+playRound(getHumanChoice(), getComputerChoice());
